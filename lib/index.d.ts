@@ -9,6 +9,7 @@ import next from "./methods/next";
 import webhookCallback from "./methods/webhookCallback";
 import start from "./methods/start";
 import execute from './methods/execute';
+import stop from './methods/stop';
 export default class VkBot implements IVkBot {
     middlewares: IMiddleware[];
     settings: IVkBotSettings;
