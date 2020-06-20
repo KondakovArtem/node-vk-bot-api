@@ -22,7 +22,7 @@ import execute from './methods/execute';
 
 
 
-export class VkBot implements IVkBot {
+export default class VkBot implements IVkBot {
   middlewares: IMiddleware[];
   settings: IVkBotSettings;
   methods: IMethod[];

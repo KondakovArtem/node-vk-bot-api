@@ -2,7 +2,7 @@
   "name": "ts-node-vk-bot-api",
   "version": "3.3.4-ts",
   "description": "🤖 VK bot framework for Node.js, based on Bots Long Poll API and Callback API",
-  "main": "dist/index.js",
+  "main": "lib/index.js",
   "scripts": {
     "test": "mocha --exit --timeout 5000",
     "build": "tsc",

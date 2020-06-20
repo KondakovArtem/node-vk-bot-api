@@ -3,7 +3,7 @@ import Context from "../context";
 import PollingError from "../errors/PollingError";
 import { IVkBot, IContextObject, IMessage } from "../models/vkbot.model";
 
-export default async function (this: IVkBot, callback: () => void, ts: any) {
+export default async function (this: IVkBot, callback?: () => void, ts?: any) {
   try {
     if (this.isStopped) {
       return;
