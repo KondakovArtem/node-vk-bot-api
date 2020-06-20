@@ -2,4 +2,3 @@ node_modules
 .idea
 config.js
 !test/config.js
-/dist
