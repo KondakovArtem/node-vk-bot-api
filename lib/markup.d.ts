@@ -7,7 +7,7 @@ export default class Markup implements IMarkup {
     oneTime(value?: boolean): this;
     inline(value?: boolean): this;
     toJSON(): string;
-    static keyboard(keyboard: IKeyboard, options: IMarkupOptions): Markup;
+    static keyboard(keyboard: IKeyboard, options?: IMarkupOptions): Markup;
     static button(label: string | IMarkupButton, color?: string, payload?: {
         button: string | IMarkupButton;
     }): IMarkupButton;

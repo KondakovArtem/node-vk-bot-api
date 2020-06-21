@@ -18,9 +18,13 @@ import use from "./methods/use";
 import next from "./methods/next";
 import webhookCallback from "./methods/webhookCallback";
 import start from "./methods/start";
-import execute from './methods/execute';
-import stop from './methods/stop';
+import execute from "./methods/execute";
+import stop from "./methods/stop";
 
+export { default as Markup } from "./markup";
+export { default as Session } from "./session";
+export { default as apiCall } from "./api";
+export * from "./models/vkbot.model";
 
 export default class VkBot implements IVkBot {
   middlewares: IMiddleware[];
@@ -29,7 +33,7 @@ export default class VkBot implements IVkBot {
   ts?: ITs;
   isStopped: boolean;
 
-  public sendMessage  = sendMessage;
+  public sendMessage = sendMessage;
   public startPolling = startPolling;
   public getLongPollParams = getLongPollParams;
   public use = use;
@@ -61,10 +65,6 @@ export default class VkBot implements IVkBot {
       typeof settings === "object" ? settings : { token: settings }
     );
 
-    // Object.entries({ ...methods, api }).forEach(([key, method]) => {
-    //   this[key] = method.bind(this);
-    // });
-
     setInterval(() => {
       utils.execute(this.methods, this.settings.token);
       this.methods = [];
@@ -79,5 +79,3 @@ export default class VkBot implements IVkBot {
     this.command([], ...middlewares);
   }
 }
-
-

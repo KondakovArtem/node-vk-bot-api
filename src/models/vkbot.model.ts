@@ -36,6 +36,7 @@ export interface IScene {
 
 export interface IContext {
   message: IMessage;
+  bot: IVkBot;
   session?: ISession;
   scene?: {
     enter(name: string, step?: number): void,
@@ -65,13 +66,50 @@ export const KEYBOARD_COLUMNS_MAX = 4;
 
 export type IKeyboard = IMarkupButton[][] | string[];
 
+export enum MarkupButtonColors {
+  DEFAULT = "default",
+  PRIMARY = "primary",
+  SECONDARY = "secondary",
+  NEGATIVE = "negative",
+  POSITIVE = "positive",
+};
+
+export interface IMarkupText {
+  type: "text";
+  label: string;
+  payload: string
+}
+
+export interface IMarkupOpenLink {
+  type: "open_link";
+  link: string;
+  label: string;
+  payload: string;
+}
+
+export interface IMarkupLocation {
+  type: "location";
+  payload: string;
+}
+
+export interface IMarkupVkPay {
+  type: "vkpay";
+  payload: "string";
+  hash: string;
+}
+
+export interface IMarkupOpenApp {
+  type: "open_app";
+  app_id: number;
+  owner_id: number;
+  payload: string;
+  label: string;
+  hash: string;
+}
+
 export interface IMarkupButton {
-  action: {
-    type: string;
-    payload: string;
-    label: string;
-  }
-  color: "default" | string;
+  action: IMarkupText | IMarkupOpenLink | IMarkupLocation | IMarkupVkPay | IMarkupOpenApp;
+  color?: MarkupButtonColors;
 }
 
 export interface IContextObject {
@@ -97,7 +135,7 @@ export interface IVkBotSettings {
 
 export type TTrigger = RegExp | string;
 export type TMiddlewareFn = (ctx: IContext, fn: () => void) => void;
-export interface ITs {}
+export type ITs = string;
 
 export interface IMiddleware {
   fn: (ctx: IContext) => void;
@@ -146,4 +184,9 @@ export interface IVkBot {
       group_id?: number;
     }
   ): Promise<T>;
+}
+
+export interface IPayloadData {
+  command?: string;
+  button?: string;
 }

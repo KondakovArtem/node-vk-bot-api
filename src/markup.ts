@@ -5,9 +5,15 @@ import {
   IKeyboard,
   KEYBOARD_COLUMNS_MAX,
   IMarkupButton,
+  MarkupButtonColors,
 } from "./models/vkbot.model";
 
 export interface IButton {}
+
+interface IButtonPayload {
+  button: string;
+  [index: string]: any;
+}
 
 export default class Markup implements IMarkup {
   __keyboard?: IMarkupKeyboard;
@@ -18,7 +24,7 @@ export default class Markup implements IMarkup {
   ) {
     this.__keyboard = {
       buttons: Array.isArray(keyboard[0])
-        ? keyboard as IMarkupButton[][]
+        ? (keyboard as IMarkupButton[][])
         : (keyboard as string[]).reduce((array, label) => {
             const button = Markup.button(label);
             const buttons = array.length ? array[array.length - 1] : array[0];
@@ -52,11 +58,16 @@ export default class Markup implements IMarkup {
     return JSON.stringify(this.__keyboard);
   }
 
-  static keyboard(keyboard: IKeyboard, options: IMarkupOptions) {
+  static keyboard(keyboard: IKeyboard, options?: IMarkupOptions) {
     return new Markup().keyboard(keyboard, options);
   }
 
-  static button(label: string | IMarkupButton, color = "default", payload = { button: label }): IMarkupButton {
+  static button(
+    label: string | IMarkupButton,
+    color = MarkupButtonColors.DEFAULT,
+    sysname?: string,
+    payload: IButtonPayload = { button: sysname || label as string },
+  ): IMarkupButton {
     if (typeof label === "object") {
       return label;
     }

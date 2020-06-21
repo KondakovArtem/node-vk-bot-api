@@ -2,13 +2,14 @@ import axios from "axios";
 import { stringify } from "querystring";
 import ApiError from "./errors/ApiError";
 
-export default async function (method: string, settings = {}) {
+async function apiCall<T = any>(method: string, settings = {}): Promise<T> {
+  const params = stringify({
+    v: 5.103,
+    ...settings,
+  });
   const { data } = await axios.post(
     `https://api.vk.com/method/${method}`,
-    stringify({
-      v: 5.103,
-      ...settings,
-    })
+    params
   );
 
   if (data.error) {
@@ -17,3 +18,5 @@ export default async function (method: string, settings = {}) {
 
   return data;
 }
+
+export default apiCall;

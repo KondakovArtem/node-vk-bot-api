@@ -5,7 +5,7 @@ import {
   IScene,
 } from "./models/vkbot.model";
 
-export class Session implements ISession {
+export default class Session implements ISession {
   __scene: {
     current: string;
     step: number;
