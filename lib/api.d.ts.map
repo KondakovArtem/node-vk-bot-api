@@ -1,1 +1,1 @@
-{"version":3,"file":"api.d.ts","sourceRoot":"","sources":["../src/api.ts"],"names":[],"mappings":"AAIA,yBAA+B,MAAM,EAAE,MAAM,EAAE,QAAQ,KAAK,gBAc3D"}
+{"version":3,"file":"api.d.ts","sourceRoot":"","sources":["../src/api.ts"],"names":[],"mappings":"AAIA,iBAAe,OAAO,CAAC,CAAC,GAAG,GAAG,EAAE,MAAM,EAAE,MAAM,EAAE,QAAQ,KAAK,GAAG,OAAO,CAAC,CAAC,CAAC,CAezE;AAED,eAAe,OAAO,CAAC"}

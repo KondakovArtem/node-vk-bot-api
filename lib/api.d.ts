@@ -1,2 +1,3 @@
-export default function (method: string, settings?: {}): Promise<any>;
+declare function apiCall<T = any>(method: string, settings?: {}): Promise<T>;
+export default apiCall;
 //# sourceMappingURL=api.d.ts.map

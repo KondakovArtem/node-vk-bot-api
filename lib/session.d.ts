@@ -1,5 +1,5 @@
 import { ISession, ISessionSettings, IContext } from "./models/vkbot.model";
-export declare class Session implements ISession {
+export default class Session implements ISession {
     __scene: {
         current: string;
         step: number;
